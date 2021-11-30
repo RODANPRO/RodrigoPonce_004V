@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="icon-only" name="menu-outline" color="tertiary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <ion-img src="/assets/dog_reading.jpg"></ion-img>
+      </ion-avatar>
+    </ion-buttons>
+    <ion-title class="tituloPages">Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let c of componentes" [routerLink]="c.redirecTo" detail="true" color="light">
+      <ion-icon [name]="c.icon" slot="start" color="tertiary"></ion-icon>
+      {{c.name}}
+    </ion-item>
+  </ion-list>
+  <ion-card-content>
+    <ion-img src="/assets/troca_libros_grande.png"></ion-img>
+  </ion-card-content>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="ion-text-center" color="tertiary">
+      <ion-icon name="logo-facebook" class="ion-padding"></ion-icon>
+      <ion-icon name="logo-twitter" class="ion-padding"></ion-icon>
+      <ion-icon name="logo-instagram" class="ion-padding"></ion-icon>
+  </ion-toolbar>
+</ion-footer>

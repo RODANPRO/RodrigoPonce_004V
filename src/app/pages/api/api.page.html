@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <ion-img src="/assets/dog_reading.jpg"></ion-img>
+      </ion-avatar>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button size="small" defaultHref="inicio" text="Back" color="tertiary" mode="ios"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="tituloPages">Bestsellers Books</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+        *ngFor="let libros of api; let i= index">
+
+        <ion-card>
+          
+          <ion-img *ngIf="libros.book_image" [src]="libros.book_image"></ion-img>
+
+          <ion-card-header>
+            <ion-card-subtitle>
+              <span>{{libros.title}}</span>
+            </ion-card-subtitle>
+            <ion-card-title>{{libros.author}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p class="ion-text-justify">{{libros.description}}</p><br>
+            <ion-card-subtitle color="primary">Link Amazon:</ion-card-subtitle>
+            <p>{{libros.amazon_product_url}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

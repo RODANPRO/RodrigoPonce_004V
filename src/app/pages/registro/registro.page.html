@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <ion-img src="/assets/dog_reading.jpg"></ion-img>
+      </ion-avatar>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button size="small" defaultHref="inicio" text="Back" color="tertiary" mode="ios"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="tituloPages">Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+
+    <!--FORMULARIO-->
+    <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+
+      <!--MÉTODO PARA VERIFICAR EL INGRESO CORRECTO DE DATOS AL FORMULARIO
+          <ion-list-header>
+            <ion-label>Credenciales: {{formulario.valid}}</ion-label>
+          </ion-list-header>
+      -->
+      <ion-item>
+        <ion-label class="textLabel" position="floating">Nombres: </ion-label>
+        <ion-input type="text" placeholder="e.j: Nicanor Segundo" name="nombres" [(ngModel)]="newDato.nombres" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="textLabel" position="floating">Apellidos: </ion-label>
+        <ion-input type="text" position="floating" placeholder="e.j: Parra Sandoval" name="apellidos"
+          [(ngModel)]="newDato.apellidos" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="textLabel" position="floating">Región: </ion-label>
+        <ion-input type="text" position="floating" placeholder="e.j: Metropolitana" name="region"
+          [(ngModel)]="newDato.region" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="textLabel" position="floating">Comuna: </ion-label>
+        <ion-input type="text" position="floating" placeholder="e.j: Santiago" name="comuna"
+          [(ngModel)]="newDato.comuna" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="textLabel">Artículos de interés</ion-label>
+        <ion-select multiple="true" name="articulos" [(ngModel)]="newDato.articulos" required>
+          <ion-select-option value="libros">Libros</ion-select-option>
+          <ion-select-option value="revistas">Revistas</ion-select-option>
+          <ion-select-option value="comics mangas">Comics - Mangas</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="textLabel">Géneros de interés</ion-label>
+        <ion-select multiple="true" name="genero" [(ngModel)]="newDato.genero" required>
+          <ion-select-option value="ficción">Ficción y temas afines</ion-select-option>
+          <ion-select-option value="sociedad">Sociedad</ion-select-option>
+          <ion-select-option value="programacion">Programación</ion-select-option>
+          <ion-select-option value="tecnologia">Tecnología</ion-select-option>
+          <ion-select-option value="ciencias sociales">Ciencias sociales</ion-select-option>
+          <ion-select-option value="novelas chilenas">Novela chilena</ion-select-option>
+          <ion-select-option value="novela negra">Novela negra</ion-select-option>
+          <ion-select-option value="poesia">Poesía</ion-select-option>
+          <ion-select-option value="salud">Salud</ion-select-option>
+          <ion-select-option value="historia">Historia</ion-select-option>
+          <ion-select-option value="cuentos">Cuentos</ion-select-option>
+          <ion-select-option value="manga">Manga</ion-select-option>
+          <ion-select-option value="biografias">Biografías</ion-select-option>
+          <ion-select-option value="ensayos">Ensayos</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="textLabel" position="floating">Email: </ion-label>
+        <ion-input type="email" placeholder="correo@ejemplo.com" name="email" [(ngModel)]="newDato.email"
+          pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="textLabel" position="floating">Password: </ion-label>
+        <ion-input type="password" placeholder="**************" name="password" [(ngModel)]="newDato.password" required>
+        </ion-input>
+      </ion-item>
+
+      <!--BOTÓN ENVIAR DATA - ACTIVA EL MÉTODO onSubmit DEL FORM-->
+      <ion-button (click)="addDatos()" [disabled]="formulario.invalid" type="submit" expand="block" routerLink="/inicio"
+        color="success">
+        ¡Vamos!
+      </ion-button>
+    </form>
+  </ion-card>
+
+  <ion-card>
+    <ion-list #myList>
+      <ion-list-header>
+        <ion-label class="tituloDatos">Datos del Registro de Usuario</ion-label>
+      </ion-list-header>
+
+      <ion-list>
+        <ion-item-sliding *ngFor="let dato of datos">
+          <ion-item>
+            <ion-label text-wrap> 
+              <h3>{{dato.nombres}}</h3>
+              <ion-text color="secondary">
+                <p>{{dato.apellidos}}</p>
+              </ion-text>
+              <p>{{dato.modified | date: 'short'}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option color="tertiary" (click)="updateDatos(dato)">Actualizar</ion-item-option>
+          <ion-item-option color="warning" (click)="deleteDatos(dato)">Eliminar</ion-item-option> 
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-list>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="ion-text-center" color="tertiary">
+    <ion-icon name="logo-facebook" class="ion-padding"></ion-icon>
+    <ion-icon name="logo-twitter" class="ion-padding"></ion-icon>
+    <ion-icon name="logo-instagram" class="ion-padding"></ion-icon>
+  </ion-toolbar>
+</ion-footer>

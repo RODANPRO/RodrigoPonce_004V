@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <ion-img src="/assets/dog_reading.jpg"></ion-img>
+      </ion-avatar>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button size="small" defaultHref="inicio" text="Back" color="tertiary" mode="ios"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="tituloPages">Bienvenid@</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Correo electrónico: </ion-label>
+        <ion-input type="text" [(ngModel)]="nombre" placeholder="Tu correo electrónico" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña: </ion-label>
+        <ion-input type="password" [(ngModel)]="password" placeholder="Tu contraseña" required></ion-input>
+      </ion-item>
+
+    <ion-toolbar>
+      <ion-button expand="block" color="tertiary" (click)="login()" [routerLink]="['/inicio']">Ingresar</ion-button>
+      <ion-button expand="block" color="tertiary" [routerLink]="['/registro']">Regístrate</ion-button>
+    </ion-toolbar>
+  </ion-card>
+
+  <ion-card>
+    <ion-img src="/assets/troca_logo2.png"></ion-img>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+</ion-footer>
